@@ -15,7 +15,7 @@ class ModelC:
         
         pass
 
-    def create_model(self ):
+    def create_model(self, SEQ_LEN ):
         
         print("Creating Model ......................")
         model = Sequential()
