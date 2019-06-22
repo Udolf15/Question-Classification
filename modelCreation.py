@@ -8,11 +8,6 @@ from keras import backend as K
 from keras.engine.topology import Layer
 from keras import initializers,regularizers, constraints
 import math
-from preprocessing import *
-
-preProcessor = Preprocessing()
-
-SEQ_LEN = 80
 
 class ModelC:
 
@@ -37,7 +32,7 @@ class ModelC:
 
         return model
 
-    def train(self, model, mg, train_df, batch_size, stopWords, emb):
+    def train(self, model, mg, train_df, batch_size, stopWords, emb, SEQ_LEN, preProcessor):
         
         print("Starting the model training ........................")
         mg = preProcessor.batch_gen(train_df,batch_size,SEQ_LEN,stopWords,emb)
@@ -46,8 +41,9 @@ class ModelC:
                             verbose=True)
 
         print("Model Trained")
+        return model
 
-    def predict(self, model, mg, testQ, stopWords, emb):
+    def predict(self, model, mg, testQ, stopWords, emb, SEQ_LEN, preProcessor):
         
         test_questions = preProcessor.batch_gen_test(testQ,SEQ_LEN,stopWords,emb)
 
@@ -69,5 +65,6 @@ class ModelC:
     def save_model(self, model):
 
         print("Saving the model")
-        model.save('model.h5')
+        model.save('data/model.h5')
         print("Model saved")
+
