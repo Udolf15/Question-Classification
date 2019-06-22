@@ -10,7 +10,7 @@ Question classification currently classify question that are written in Hindi la
 RAM >= 8GB  
 Maximum Length of question should be 80 words.
 Install required libraries using following command : ``` pip install -r requirements.txt ```
-Download the fast text Hindi word embeddings [here](https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.hi.300.vec.gz)
+Download the fast text Hindi word embeddings [here](https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.hi.300.vec.gz) and place them in data folder
 
 ## Getting Started
 
