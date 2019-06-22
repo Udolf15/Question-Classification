@@ -1,4 +1,4 @@
-from modelCreation import *
+﻿from modelCreation import *
 from embeddings import *
 from preprocessing import *
 
@@ -20,7 +20,7 @@ train_df = preProcessor.dfPreprocess(train_df)
 
 # Creating the embeddings
 print("Embedding will take about 4GB ram if system have less than 8GB RAM it will crash so exit using Ctrl+C ")
-print("Loading Embeddings Since size of embeddings is about 4GB, Loading will take time")
+print("Since size of embeddings is about 4GB, Loading will take time")
 emb = embeddings.create_embeddings()
 print("Embeddings Created")
 
@@ -31,7 +31,7 @@ choice = int(input("Press 1: Trained Model\nPress 2: Train a new Model : "))
 
 if(choice == 2):
     #Creating the model
-    model = modelObject.create_model()
+    model = modelObject.create_model(SEQ_LEN)
     dg = preProcessor.batch_gen(train_df, batch_size, SEQ_LEN, stopWords, emb)
     model = modelObject.train(model, dg, train_df, batch_size, stopWords, emb, SEQ_LEN, preProcessor)
     print("Model Trained ")
