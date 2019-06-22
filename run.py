@@ -39,7 +39,8 @@ if(choice == 2):
     choice2 = int(input("Press 1: Save Model\nPress 2: Skip saving : "))
     
     if(choice2 == 1):
-        modelObject.save_model(model)
+        name = input("Enter the name of model to be saved : ")
+        modelObject.save_model(model, name)
     
 elif(choice == 1):
     try:

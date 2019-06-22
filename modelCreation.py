@@ -62,9 +62,9 @@ class ModelC:
                 print("Question belongs to Movies Category")
                 print("Confidence : ",prediction[1]*100,"%")
 
-    def save_model(self, model):
+    def save_model(self, model, name):
 
         print("Saving the model")
-        model.save('data/model.h5')
+        model.save('data/'+name+'.h5')
         print("Model saved")
 
