@@ -13,6 +13,10 @@ class Preprocessing:
 
         pass
 
+    def read_csv(self, path):
+
+        return pd.read_csv(path)
+
     def dfPreprocess( self, df ):
 
         print("Cleaning the training dataset ..........................")
@@ -68,11 +72,11 @@ class Preprocessing:
             for i in range(n_batches):
                 texts = df.iloc[i*batch_size:(i+1)*batch_size, 0]
                 text_arr = np.array([self.text_to_array(text, SEQ_LEN, stopWords, emb) for text in texts])
-                                yield text_arr, np.array([df["Politics"][i*batch_size:(i+1)*batch_size],df["Movies"][i*batch_size:(i+1)*batch_size]]).transpose()
+                yield text_arr, np.array([df["Politics"][i*batch_size:(i+1)*batch_size],df["Movies"][i*batch_size:(i+1)*batch_size]]).transpose()
 
     def batch_gen_test(self, texts, SEQ_LEN, stopWords, emb):
 
         print("Generating Testing batch from the input list of questions")
-        
+
         text_arr = np.array([self.text_to_array(text,SEQ_LEN,stopWords,emb) for text in texts])
         yield text_arr
